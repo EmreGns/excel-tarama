@@ -23,7 +23,7 @@ class ExcelSearchApp(tk.Tk):
 
         # === Genel Ayarlar ===
         self.configure(bg="#3a3f4b")
-        self.title("📁 Excel Gelişmiş Arama - ⚓ ---- ⚓")
+        self.title("📁 Excel Gelişmiş Arama - ⚓ YALTES ⚓")
         self.geometry("800x600")
         self.folder_path = None
 
@@ -159,3 +159,4 @@ class ExcelSearchApp(tk.Tk):
 if __name__ == "__main__":
     app = ExcelSearchApp()
     app.mainloop()
+
