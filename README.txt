@@ -1,4 +1,4 @@
-Excell Gelişmiş Aramanın Nedir?
+Excell Gelişmiş Arama Programı Nedir?
 
 Excell Gelişmiş Arama, Excel dosyalarında yazım hatası, eksik harf veya karakter farkı gibi nedenlerle bulunamayan verileri
 tespit etmek amacıyla geliştirilmiştir. Gelişmiş benzerlik algoritması sayesinde, aradığınız kelimeye en yakın sonuçlar yüzde
@@ -52,3 +52,4 @@ Program bazı bilgisayarlarda yavaş çalışabiliyor. İsteğe göre birden faz
 Ek bilgi:
 __pycache__ klasörü, programı ilk kez çalıştırdığınızda otomatik olarak oluşur. Bu klasör, programın sonraki çalıştırmalarda 
 daha hızlı açılmasını sağlar. Silmenize gerek yoktur.
+
