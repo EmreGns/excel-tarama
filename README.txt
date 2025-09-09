@@ -1,6 +1,6 @@
-Excell Gelişmiş Arama Programı Nedir?
+Excel Gelişmiş Arama Programı Nedir?
 
-Excell Gelişmiş Arama, Excel dosyalarında yazım hatası, eksik harf veya karakter farkı gibi nedenlerle bulunamayan verileri
+Excel Gelişmiş Arama, Excel dosyalarında yazım hatası, eksik harf veya karakter farkı gibi nedenlerle bulunamayan verileri
 tespit etmek amacıyla geliştirilmiştir. Gelişmiş benzerlik algoritması sayesinde, aradığınız kelimeye en yakın sonuçlar yüzde
 cinsinden benzerlik oranlarıyla birlikte listelenir. Arama işlemi, kullanıcı tarafından seçilecek bir klasör içerisinde
 gerçekleştirilir. Seçilen klasörde birden fazla Excel (.xlsx) dosyası varsa, program bunların tamamını tarayarak ilgili
@@ -26,11 +26,11 @@ gereklidir.
 Cmd'ye aşağıdaki komutu yapıştırdığınızda gerekli kütüphaneler de kurulmuş olacaktır.
 pip install pandas==2.3.2 openpyxl==3.1.5 rapidfuzz==3.14.0
 -----------------------------------------------------------------------------------------------------------------------------
-Excell Gelişmiş Arama programı iki ana dosyadan oluşur:
-excell_arama_backend.py dosyası kodun arka plan kısmıdır.
-Excell Gelişmiş Arama Programı ise arayüz kısmıdır.
+Excel Gelişmiş Arama programı iki ana dosyadan oluşur:
+excel_arama_backend.py dosyası kodun arka plan kısmıdır.
+Excel Gelişmiş Arama Programı ise arayüz kısmıdır.
  
-Kurulumlar tamamlandıktan sonra Excell Gelişmiş Arama Programı.py dosyasına çift tıklayarak programı başlatabilirsiniz.
+Kurulumlar tamamlandıktan sonra Excel Gelişmiş Arama Programı.py dosyasına çift tıklayarak programı başlatabilirsiniz.
 -----------------------------------------------------------------------------------------------------------------------------
 Dikkat Edilmesi Gerekenler:
 Program çalışırken bir terminal penceresi açılır. Bu pencereyi kapatmayın. Kodlar bu terminal üzerinden çalışır. Terminali 
@@ -39,12 +39,12 @@ kapatırsanız program da kapanır. İsterseniz sağ üstteki _ butonuna basarak
 Program klasör halinde çalışacak şekilde tasarlanmıştır. İçerisindeki dosyaları taşırsanız, isim değişikliği yaparsanız 
 program düzgün çalışmayabilir. 
 -----------------------------------------------------------------------------------------------------------------------------
-excell_arama_backend.py dosyasında 15.satırda kısaltma sözlüğü bulunmakta. Bu sözlük "P-" araması yapıldığında algoritmanın
+excel_arama_backend.py dosyasında 15.satırda kısaltma sözlüğü bulunmakta. Bu sözlük "P-" araması yapıldığında algoritmanın
  "pressure" 
 olarak algılamasını sağlıyor. Bu tarz düzenlemeleri kod içerisine ekleyebilirsiniz. 
 -----------------------------------------------------------------------------------------------------------------------------
 Tavsiyeler:
-Masaüstünüzde bir klasör (ör. Excell_taranacak_klasörler) oluşturup taramak istediğiniz Excel dosyalarını buraya eklerseniz,
+Masaüstünüzde bir klasör (ör. Excel_taranacak_klasörler) oluşturup taramak istediğiniz Excel dosyalarını buraya eklerseniz,
 programı ilk açtığınızda bu klasörü bir defaya mahsus seçmeniz yeterlidir. Seçtiğiniz klasör, uygulama tarafından otomatik
 olarak kaydedilir ve bir sonraki çalıştırmada tekrar klasör seçmenize gerek kalmaz.
 
