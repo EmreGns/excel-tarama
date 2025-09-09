@@ -10,12 +10,32 @@ Standart Kütüphaneler:
 
 Yerelde bulunması gereken Modül:
 - excell_arama
-
 """
+
 import tkinter as tk
 from tkinter import filedialog, ttk, messagebox
 import threading
-from excell_arama import search_excel_files  # Excel arama modülün
+import os
+import json
+from excell_arama_backend import search_excel_files  # Excel arama modülü
+
+AYARLAR_DOSYASI = "ayarlar.json"
+
+def ayarlari_yukle():
+    if os.path.exists(AYARLAR_DOSYASI):
+        try:
+            with open(AYARLAR_DOSYASI, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            return {}
+    return {}
+
+def ayarlari_kaydet(data):
+    try:
+        with open(AYARLAR_DOSYASI, "w", encoding="utf-8") as f:
+            json.dump(data, f)
+    except Exception as e:
+        print("Ayarlar kaydedilemedi:", e)
 
 class ExcelSearchApp(tk.Tk):
     def __init__(self):
@@ -41,8 +61,14 @@ class ExcelSearchApp(tk.Tk):
                                    bg="#3a3f4b", fg="white")
         self.lbl_folder.grid(row=0, column=1, columnspan=3, sticky="w")
 
+        # Önceden kayıtlı klasörü yükle
+        ayarlar = ayarlari_yukle()
+        if "klasor" in ayarlar and os.path.exists(ayarlar["klasor"]):
+            self.folder_path = ayarlar["klasor"]
+            self.lbl_folder.config(text=f"📂 {self.folder_path}")
+
         # === Arama Terimi ===
-        tk.Label(self,text="🔍 Arama Terimi:",bg="#3a3f4b",fg="white" ).grid(row=1, column=0,padx=5, pady=5,sticky="we")
+        tk.Label(self, text="🔍 Arama Terimi:", bg="#3a3f4b", fg="white").grid(row=1, column=0, padx=5, pady=5, sticky="we")
 
         self.entry_search = tk.Entry(self, bg="#4b5263", fg="white", insertbackground="white", relief="flat")
         self.entry_search.grid(row=1, column=1, columnspan=1, padx=(5,5), pady=5, sticky="we")
@@ -51,11 +77,9 @@ class ExcelSearchApp(tk.Tk):
                                     bg="#5c6370", fg="white", activebackground="#6c7380", relief="flat",
                                     height=1, width=5, font=("Arial", 8, "bold"))
         self.btn_search.grid(row=1, column=2, padx=(0,30), pady=5, sticky="e")
-        
-        # === Gösterim Türü, Offset ===
 
-        tk.Label(self, text="🎯 Gösterim Türü:", bg="#3a3f4b", fg="white").grid(
-            row=2, column=0, padx=5, pady=5, sticky="e")
+        # === Gösterim Türü, Offset ===
+        tk.Label(self, text="🎯 Gösterim Türü:", bg="#3a3f4b", fg="white").grid(row=2, column=0, padx=5, pady=5, sticky="e")
 
         self.case_var = tk.StringVar()
         self.combo_case = ttk.Combobox(self, textvariable=self.case_var, state="readonly", width=30)
@@ -68,17 +92,21 @@ class ExcelSearchApp(tk.Tk):
         self.combo_case.current(0)
         self.combo_case.grid(row=2, column=1, padx=5, pady=5, sticky="w")
 
-        # 🔢 Offset (x): ve Entry - Aynı satırda, bir alt satıra
-        self.frame_offset = tk.Frame(self, bg="#3a3f4b")  # Kaydet referansla
+        # 🔢 Offset (x): ve Entry 
+        self.frame_offset = tk.Frame(self, bg="#3a3f4b") 
         tk.Label(self.frame_offset, text="🔢 Offset (x):", bg="#3a3f4b", fg="white").pack(side="left", padx=(0, 5))
         self.offset_var = tk.StringVar(value="2")
         self.entry_offset = tk.Entry(self.frame_offset, textvariable=self.offset_var, width=5,
                                      bg="#4b5263", fg="white", insertbackground="white", relief="flat")
         self.entry_offset.pack(side="left")
-        self.frame_offset.grid(row=3, column=1, padx=5, pady=5, sticky="w")  # Başlangıçta görünmesin
+        self.frame_offset.grid(row=3, column=1, padx=5, pady=5, sticky="w")
         self.frame_offset.grid_remove()
 
-        # === Combobox seçimi 1 iken offset invisible etme fonksiyonu ===
+        # === Arama kutusuna odak ve Enter tuşu ile ara ===
+        self.entry_search.focus_set()
+        self.bind("<Return>", lambda event: self.perform_search())
+
+        # === Offset görünürlüğünü kontrol et ===
         def update_offset_visibility(event=None):
             selected = self.case_var.get()
             if selected.startswith("1"):  # 1 - Tüm Satır
@@ -86,7 +114,6 @@ class ExcelSearchApp(tk.Tk):
             else:
                 self.frame_offset.grid(row=3, column=1, padx=5, pady=5, sticky="w")
 
-        # Combobox'a bağla
         self.combo_case.bind("<<ComboboxSelected>>", update_offset_visibility)
         update_offset_visibility()
 
@@ -109,6 +136,7 @@ class ExcelSearchApp(tk.Tk):
         if path:
             self.folder_path = path
             self.lbl_folder.config(text=f"📂 {path}")
+            ayarlari_kaydet({"klasor": path})  # klasörü kaydet
 
     def perform_search(self):
         if not self.folder_path:
@@ -130,14 +158,12 @@ class ExcelSearchApp(tk.Tk):
         except:
             offset = 2
 
-        # Arama sırasında kullanıcıya bilgi ver ve butonları kilitle
         self.text_results.delete("1.0", tk.END)
         self.text_results.insert(tk.END, "⏳ Arama yapılıyor, lütfen bekleyin...\n")
         self.btn_search.config(state="disabled")
         self.progress.grid()
         self.progress.start(10)
 
-        # Arama işlemini yeni bir thread'e taşı
         threading.Thread(target=self.run_search, args=(search_term, case, offset), daemon=True).start()
 
     def run_search(self, search_term, case, offset):
@@ -159,4 +185,3 @@ class ExcelSearchApp(tk.Tk):
 if __name__ == "__main__":
     app = ExcelSearchApp()
     app.mainloop()
-
