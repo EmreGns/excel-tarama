@@ -17,8 +17,11 @@ rapidfuzz 3.14.0
 
 Kurulumları yapmak için:
 
-Python 3.13.7 için aşağıdaki adresten yükleme yapabilirsiniz.
+Python 3.13.7 sürümünü aşağıdaki adresten indirebilirsiniz:
 https://www.python.org/downloads/
+
+Kurulum sırasında "Add Python to PATH" seçeneğini işaretlemeyi unutmayın. Bu, Python'un komut satırından çalışabilmesi için 
+gereklidir.
 
 Cmd'ye aşağıdaki komutu yapıştırdığınızda gerekli kütüphaneler de kurulmuş olacaktır.
 pip install pandas==2.3.2 openpyxl==3.1.5 rapidfuzz==3.14.0
