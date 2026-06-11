@@ -1,3 +1,4 @@
+[README.md](https://github.com/user-attachments/files/28836280/README.md)
 # 🔍 Excel Gelişmiş Arama Programı
 
 Excel Gelişmiş Arama, Excel dosyalarında yazım hatası, eksik harf veya karakter farkı gibi nedenlerle bulunamayan verileri tespit etmek amacıyla geliştirilmiştir.
@@ -6,15 +7,18 @@ Gelişmiş benzerlik algoritması sayesinde, aradığınız kelimeye en yakın s
 
 Seçilen klasörde birden fazla Excel (`.xlsx`) dosyası varsa, program bunların tamamını tarayarak ilgili sonuçları sunar.
 
-> **Örnek:** Bir klasör içinde yer alan 8 farklı Excel dosyasında belirli bir tag'i veya metni aramak istiyorsanız, bu dosyaları tek bir klasörde toplayıp program üzerinden klasörü seçmeniz yeterlidir.
+> **Örnek:** Bir klasör içinde yer alan 8 farklı Excel dosyasında belirli bir etiket veya metni aramak istiyorsanız, bu dosyaları tek bir klasörde toplayıp program üzerinden klasörü seçmeniz yeterlidir.
 
-Ayrıca, arama yapmak istediğiniz Excel dosyasında yazım hataları varsa ve Excel'in kendi "Bul" özelliği bu kelimeleri bulamıyorsa, bu program size **en yakın eşleşmeleri** göstererek aradığınızı kolayca bulmanızı sağlar.
+Ayrıca, arama yapmak istediğiniz Excel dosyasında yazım yanlışları varsa ve Excel'in kendi "Bul" özelliği bu kelimeleri bulamıyorsa, bu program size **en yakın eşleşmeleri** göstererek aradığınızı kolayca bulmanızı sağlar.
 
 ---
 
-## 📦 Gereksinimler
+## 🖥️ Arayüz
 
-Programın çalışabilmesi için aşağıdaki Python kütüphaneleri gereklidir:
+<img width="920" height="680" alt="proje_gorseli" src="https://github.com/user-attachments/assets/ac00057a-1423-4a40-b72d-5134704e4df0" />
+---
+
+## 📦 Gereksinimler
 
 | Paket | Sürüm |
 |-------|-------|
@@ -61,7 +65,6 @@ Kurulumlar tamamlandıktan sonra **`Excel Gelişmiş Arama Programı.py`** dosya
 ## ⚠️ Dikkat Edilmesi Gerekenler
 
 - Program çalışırken bir **terminal penceresi** açılır. Bu pencereyi kapatmayın — kodlar bu terminal üzerinden çalışır. Terminali kapatırsanız program da kapanır. İsterseniz sağ üstteki `_` butonuna basarak terminali küçültüp arka plana alabilirsiniz.
-
 - Program **klasör halinde** çalışacak şekilde tasarlanmıştır. İçerisindeki dosyaları taşırsanız veya isim değişikliği yaparsanız program düzgün çalışmayabilir.
 
 ---
@@ -77,7 +80,6 @@ Bu sözlük sayesinde örneğin `"P-"` araması yapıldığında algoritma bunu 
 ## 💡 Tavsiyeler
 
 - Masaüstünüzde bir klasör *(örn. `Excel_taranacak_klasörler`)* oluşturup taramak istediğiniz Excel dosyalarını buraya eklerseniz, programı ilk açtığınızda bu klasörü **bir defaya mahsus** seçmeniz yeterlidir. Seçtiğiniz klasör uygulama tarafından otomatik olarak kaydedilir ve bir sonraki çalıştırmada tekrar seçmenize gerek kalmaz.
-
 - Program bazı bilgisayarlarda yavaş çalışabiliyor. İsteğe göre **birden fazla arayüz** açıp her birinde farklı aramalar yapabilirsiniz.
 
 ---
