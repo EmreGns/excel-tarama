@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/28836280/README.md)
 # 🔍 Excel Gelişmiş Arama Programı
 
 Excel Gelişmiş Arama, Excel dosyalarında yazım hatası, eksik harf veya karakter farkı gibi nedenlerle bulunamayan verileri tespit etmek amacıyla geliştirilmiştir.
