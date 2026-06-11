@@ -16,7 +16,8 @@ Ayrıca, arama yapmak istediğiniz Excel dosyasında yazım yanlışları varsa 
 ## 🖥️ Arayüz
 
 <img width="920" height="680" alt="proje_gorseli" src="https://github.com/user-attachments/assets/ac00057a-1423-4a40-b72d-5134704e4df0" />
----
+
+⚠️ Not: Arayüz görselinde yer alan Excel dosyaları ve veriler yalnızca tanıtım amaçlı üretilmiştir. Gerçek şirket verileriyle hiçbir ilgisi bulunmamaktadır.
 
 ## 📦 Gereksinimler
 
